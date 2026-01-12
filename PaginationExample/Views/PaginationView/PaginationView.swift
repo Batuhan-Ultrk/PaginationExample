@@ -60,10 +60,15 @@ struct PaginationView<Item: Identifiable, Content: View>: View {
         perform action: @escaping (Element) -> Void
     ) -> () -> Void {
         {
-            guard let validItem = listProvider().first(where: { $0.id == item.id }) else {
+            guard let validItem = listProvider().first(
+                where: {
+                    $0.id == item.id
+                }) else {
                 return
             }
-            action(validItem)
+            action(
+                validItem
+            )
         }
     }
 }

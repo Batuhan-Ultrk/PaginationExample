@@ -31,7 +31,13 @@ final class FolderViewViewModel: BaseViewViewModel<FolderViewState> {
 
 
     @MainActor
-    func loadFolders() async {
+    func loadFolders(
+        resetLoadFolders: Bool = false
+    ) async {
+        if resetLoadFolders {
+            viewState.folderPagination.resetItems(&viewState.folderList)
+        }
+
         await loadPagedItems(
             itemsKeyPath: \FolderViewState.folderList,
             paginationKeyPath: \FolderViewState.folderPagination,

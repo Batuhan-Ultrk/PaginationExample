@@ -54,7 +54,7 @@ class BaseViewViewModel<D: BaseViewState>: ObservableObject {
         }
         pagination.isLoading = true
         viewState[keyPath: paginationKeyPath] = pagination
-
+        
         await sendRequest(
             {
                 try await fetch(pagination.page, pagination.per)
@@ -62,14 +62,16 @@ class BaseViewViewModel<D: BaseViewState>: ObservableObject {
             loading: type,
             onSuccess: { [weak self] response in
                 guard let self else { return }
-
+                
                 /// Items append or replace logic
                 if pagination.page == 1 {
                     self.viewState[keyPath: itemsKeyPath] = response.items
                 } else {
-                    self.viewState[keyPath: itemsKeyPath].append(contentsOf: response.items)
+                    self.viewState[keyPath: itemsKeyPath].append(
+                        contentsOf: response.items
+                    )
                 }
-
+                
                 /// Pagination metadata update
                 pagination.pageCount = response.metadata.pageCount
                 pagination.total = response.metadata.total
