@@ -140,3 +140,7 @@ ViewModel içinde pagination logic yoktur, sadece niyet vardır.
   
   ✅ Ölçeklenebilir
 
+## 📖 İlgili Makale
+Bu mimarinin detaylarını ve arkasındaki mantığı anlattığım Medium yazısına buradan ulaşabilirsiniz: 
+[Swift Concurrency ile Generic ve Güvenli Pagination Altyapısı](https://medium.com/@batuhanuluturk1463/swift-concurrency-ile-generic-ve-güvenli-pagination-altyapısı-0846e3811ad7)
+
